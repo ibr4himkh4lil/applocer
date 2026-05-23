@@ -6,14 +6,13 @@ class AppListService {
   static Future<List<AppInfo>> getAllApps() async {
     final locked = await StorageService.getLockedApps();
     
-    // installed_apps use kore apps fetch kora (true = icon include, false = system apps exclude)
     final apps = await InstalledApps.getInstalledApps(true, false);
     
     final list = apps.map((a) {
       return AppInfo(
-        packageName: a.packageName,
-        appName: a.name,
-        isSystem: a.systemApp,
+        packageName: a.packageName ?? '',
+        appName: a.name ?? '',
+        isSystem: a.isSystemApp ?? false,
         isLocked: locked.contains(a.packageName),
         icon: a.icon,
       );

@@ -48,7 +48,7 @@ void _onStart(ServiceInstance service) async {
     try {
       final fg = await UsageStatsService.getForegroundApp();
       final locked = await StorageService.getLockedApps();
-      final ownPkg = 'com.yourname.applocker'; // <-- change to yours
+      final ownPkg = 'com.yourname.applocker';
 
       if (fg != null &&
           fg != lastPkg &&
@@ -60,8 +60,8 @@ void _onStart(ServiceInstance service) async {
           overlayTitle: "Locked",
           overlayContent: "Authentication required",
           flag: OverlayFlag.defaultFlag,
-          visibility: NotificationVisibility.public,
-          positionGravity: Gravity.none,
+          visibility: NotificationVisibility.visibilityPublic,
+          positionGravity: PositionGravity.none,
           height: WindowSize.matchParent,
           width: WindowSize.matchParent,
         );
