@@ -6,13 +6,16 @@ class AppListService {
   static Future<List<AppInfo>> getAllApps() async {
     final locked = await StorageService.getLockedApps();
     
-    final apps = await InstalledApps.getInstalledApps(true, false);
+    // installed_apps 1.6.0 te AppInfo class e 'isSystemApp' property nai.
+    // Tai amra getInstalledApps(true, true) use korbo.
+    // (Prothom true = excludeSystemApps, Ditiyo true = withIcon)
+    final apps = await InstalledApps.getInstalledApps(true, true);
     
     final list = apps.map((a) {
       return AppInfo(
-        packageName: a.packageName ?? '',
-        appName: a.name ?? '',
-        isSystem: a.isSystemApp ?? false,
+        packageName: a.packageName,
+        appName: a.name,
+        isSystem: false, // Jhetu system app agei exclude kora hoyeche, tai shob user app
         isLocked: locked.contains(a.packageName),
         icon: a.icon,
       );
