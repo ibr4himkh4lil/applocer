@@ -1,0 +1,31 @@
+name: applocer
+description: A full-featured App Locker
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2
+  installed_apps: ^1.6.0
+  flutter_overlay_window: ^0.4.5
+  flutter_background_service: ^5.1.0
+  flutter_secure_storage: ^9.2.4
+  local_auth: ^2.3.0
+  android_intent_plus: ^5.3.1
+  permission_handler: ^11.4.0
+  path_provider: ^2.1.5
+  shared_preferences: ^2.5.5
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
